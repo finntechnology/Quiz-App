@@ -31,9 +31,56 @@ const quizData = [
         d: "none of the above",
         correct: "b",
     },
-
-
+    {
+        question: "What is the default port number for HTTP?",
+        a: "80",
+        b: "443",
+        c: "8080",
+        d: "22",
+        correct: "a",
+    },
+    {
+        question: "Which HTML attribute is used to define inline styles?",
+        a: "class",
+        b: "font",
+        c: "style",
+        d: "styles",
+        correct: "c",
+    },
+    {
+        question: "Which company developed the TypeScript programming language?",
+        a: "Google",
+        b: "Microsoft",
+        c: "Facebook",
+        d: "Apple",
+        correct: "b",
+    },
+    {
+        question: "Which version control system is Git based on?",
+        a: "Subversion",
+        b: "CVS",
+        c: "Mercurial",
+        d: "None of the above",
+        correct: "d",
+    },
+    {
+        question: "What does JSON stand for?",
+        a: "JavaScript Oriented Notation",
+        b: "Java Source Object Notation",
+        c: "JavaScript Object Notation",
+        d: "JavaScript Online Notation",
+        correct: "c",
+    },
+    {
+        question: "What is the purpose of a package manager in programming?",
+        a: "To manage code documentation",
+        b: "To manage software dependencies",
+        c: "To manage user interfaces",
+        d: "To manage database connections",
+        correct: "b",
+    }
 ];
+
 
 const quiz= document.getElementById('quiz')
 const answerEls = document.querySelectorAll('.answer')
