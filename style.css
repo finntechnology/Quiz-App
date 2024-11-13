@@ -8,6 +8,8 @@
 body{
   background-color: #b8c6db;
   background-image: url('https://cdn-0001.qstv.on.epicgames.com/EIrVpokNEcmNFzoRuz/image/landscape_comp.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
   font-family: 'Poppins', sans-serif;
   display: flex;
   align-items: center;
@@ -15,7 +17,6 @@ body{
   height: 100vh;
   overflow: hidden;
   margin: 0;
-  
 }
 .quiz-container{
   background-color: #fff;
