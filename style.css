@@ -82,3 +82,25 @@ button:focus{
   background-color: #ffe6e6;
   border: 1px solid #ff0000;
 }
+
+/* Media query for mobile screens */
+@media (max-width: 600px) {
+  .quiz-container {
+    width: 100%;
+    margin: 0 1rem;
+  }
+
+  .quiz-header {
+    padding: 2rem;
+  }
+
+  ul li {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+}
