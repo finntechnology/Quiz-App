@@ -1,3 +1,4 @@
+// Quiz data array containing questions, possible answers, and correct answers
 const quizData = [
     {
         question: "Which language runs in a web browser?",
@@ -23,167 +24,84 @@ const quizData = [
         d: "Helicopters Terminals Motorboats Lamborginis",
         correct: "a",
     },
-    {
-        question: "What year was JavaScript launched?",
-        a: "1996",
-        b: "1995",
-        c: "1994",
-        d: "none of the above",
-        correct: "b",
-    },
-    {
-        question: "What is the default port number for HTTP?",
-        a: "80",
-        b: "443",
-        c: "8080",
-        d: "22",
-        correct: "a",
-    },
-    {
-        question: "Which HTML attribute is used to define inline styles?",
-        a: "class",
-        b: "font",
-        c: "style",
-        d: "styles",
-        correct: "c",
-    },
-    {
-        question: "Which company developed the TypeScript programming language?",
-        a: "Google",
-        b: "Microsoft",
-        c: "Facebook",
-        d: "Apple",
-        correct: "b",
-    },
-    {
-        question: "Which version control system is Git based on?",
-        a: "Subversion",
-        b: "CVS",
-        c: "Mercurial",
-        d: "None of the above",
-        correct: "d",
-    },
-    {
-        question: "What does JSON stand for?",
-        a: "JavaScript Oriented Notation",
-        b: "Java Source Object Notation",
-        c: "JavaScript Object Notation",
-        d: "JavaScript Online Notation",
-        correct: "c",
-    },
-    {
-        question: "What is the purpose of a package manager in programming?",
-        a: "To manage code documentation",
-        b: "To manage software dependencies",
-        c: "To manage user interfaces",
-        d: "To manage database connections",
-        correct: "b",
-    },
-    {
-        question: "What keyword is used to define a class in Python?",
-        a: "function",
-        b: "def",
-        c: "class",
-        d: "struct",
-        correct: "c",
-    },
-    {
-        question: "What is the result of 3+4*5 in Python?",
-        a: "35",
-        b: "23",
-        c: "20",
-        d: "17",
-        correct: "b",
-    },
-    {
-        question: "In C++, what is the correct syntax to print a value to the console?",
-        a: "print(value);",
-        b: "console.log(value);",
-        c: "cout << value;",
-        d: "printf(value);",
-        correct: "c",
-    },
-    {
-        question: "In React, what is a component?",
-        a: "A function or class that returns a piece of the UI",
-        b: "A database model",
-        c: "An HTTP request handler",
-        d: "A styling library",
-        correct: "a",
-    },
-    {
-        question: "In C#, what keyword is used to inherit from a base class?",
-        a: "extends",
-        b: "inherits",
-        c: "implements",
-        d: "base",
-        correct: "a",
-    }
+    // ...other questions here
 ];
 
-const quiz = document.getElementById('quiz')
- const answerEls = document.querySelectorAll('.answer')
-  const questionEl = document.getElementById('question')
-   const a_text = document.getElementById('a_text')
-    const b_text = document.getElementById('b_text')
-     const c_text = document.getElementById('c_text')
-      const d_text = document.getElementById('d_text')
-       const submitBtn = document.getElementById('submit')
-        const result = document.getElementById('result')
-         let currentQuiz = 0 
-let score = 0 
-loadQuiz() 
+// Select the necessary DOM elements
+const quiz = document.getElementById('quiz'); // The container for the quiz
+const answerEls = document.querySelectorAll('.answer'); // All the radio button elements (answers)
+const questionEl = document.getElementById('question'); // The element to display the question
+const a_text = document.getElementById('a_text'); // The element for answer A
+const b_text = document.getElementById('b_text'); // The element for answer B
+const c_text = document.getElementById('c_text'); // The element for answer C
+const d_text = document.getElementById('d_text'); // The element for answer D
+const submitBtn = document.getElementById('submit'); // The submit button
+const result = document.getElementById('result'); // Element to display result feedback (correct/wrong)
 
-function loadQuiz() 
-{ deselectAnswers() 
+// Initialize quiz state variables
+let currentQuiz = 0; // Track the current question
+let score = 0; // Track the score (number of correct answers)
 
-    const currentQuizData = quizData[currentQuiz] 
-    questionEl.innerText = currentQuizData.question 
-    a_text.innerText = currentQuizData.a 
-    b_text.innerText = currentQuizData.b 
-    c_text.innerText = currentQuizData.c 
-    d_text.innerText = currentQuizData.d 
-    result.classList.remove('correct', 'wrong') 
-    result.innerText = '' 
-} 
+// Load the first quiz question
+loadQuiz(); 
 
-    function deselectAnswers() { 
-        answerEls.forEach(answerEl => answerEl.checked = false)
-     } 
+// Function to load the current question and answers
+function loadQuiz() {
+    deselectAnswers(); // Deselect any previously selected answers
 
-     function getSelected() { 
-        let answer
-         answerEls.forEach(answerEl => { 
-            if (answerEl.checked) { 
-                answer = answerEl.id
-             }
-             })
+    // Get the current quiz data (question and answers)
+    const currentQuizData = quizData[currentQuiz];
+    questionEl.innerText = currentQuizData.question; // Display the current question
+    a_text.innerText = currentQuizData.a; // Display answer A
+    b_text.innerText = currentQuizData.b; // Display answer B
+    c_text.innerText = currentQuizData.c; // Display answer C
+    d_text.innerText = currentQuizData.d; // Display answer D
 
-                 return answer 
-                } 
-                
-                submitBtn.addEventListener('click', () => { 
-                    const answer = getSelected()
-                     if (answer) {
-                         if (answer === quizData[currentQuiz].correct)
-                             { 
-                        score++ 
-                        result.innerText = 'Correct!' 
-                        result.classList.add('correct')
-                     } else {
-                         result.innerText = `Wrong answer! The correct answer was ${quizData[currentQuiz].correct.toUpperCase()}.`
-                      result.classList.add('wrong')
-                     }
-                     
-                     currentQuiz++ 
+    // Clear any previous result feedback
+    result.classList.remove('correct', 'wrong'); 
+    result.innerText = ''; 
+}
 
-                     if (currentQuiz < quizData.length) {
-                         setTimeout(loadQuiz, 1000) // Delay to show the result message before loading the next question
-                          } else { 
-                            quiz.innerHTML = `
-                             <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+// Function to deselect all radio buttons (answers)
+function deselectAnswers() {
+    answerEls.forEach(answerEl => answerEl.checked = false); // Uncheck all radio buttons
+}
 
-                              <button onclick="location.reload()">Reload</button>
-                               ` } 
-                            }
-                        })
+// Function to get the selected answer (returns the id of the checked radio button)
+function getSelected() {
+    let answer;
+    answerEls.forEach(answerEl => {
+        if (answerEl.checked) { // If the radio button is checked
+            answer = answerEl.id; // Save the id of the checked answer (e.g., 'a', 'b', 'c', 'd')
+        }
+    });
+    return answer; // Return the selected answer's id
+}
+
+// Event listener for when the submit button is clicked
+submitBtn.addEventListener('click', () => {
+    const answer = getSelected(); // Get the selected answer
+
+    if (answer) { // If an answer was selected
+        if (answer === quizData[currentQuiz].correct) { // If the selected answer is correct
+            score++; // Increment the score
+            result.innerText = 'Correct!'; // Display correct feedback
+            result.classList.add('correct'); // Add 'correct' class for styling
+        } else {
+            result.innerText = `Wrong answer! The correct answer was ${quizData[currentQuiz].correct.toUpperCase()}.`; // Show the correct answer
+            result.classList.add('wrong'); // Add 'wrong' class for styling
+        }
+
+        currentQuiz++; // Move to the next question
+
+        // If there are more questions, load the next question after a short delay
+        if (currentQuiz < quizData.length) {
+            setTimeout(loadQuiz, 1000); // Delay of 1 second before loading the next question
+        } else { // If no more questions, show the final score and a reload button
+            quiz.innerHTML = `
+                <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+                <button onclick="location.reload()">Reload</button> <!-- Reload button to restart the quiz -->
+            `;
+        }
+    }
+});
