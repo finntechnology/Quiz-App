@@ -12,7 +12,7 @@ This project is designed to showcase skills in **front-end development** using H
 
 Here’s a preview of the application:
 
-![App Screenshot](/image/quiz.png)
+![App Screenshot](/quiz.png)
 
 ## Installation
 
